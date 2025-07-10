@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\FoodCart.Domain.csproj" />
+    <ProjectReference Include="..\FoodCart.Infrastructure\FoodCart.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
