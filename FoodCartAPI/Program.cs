@@ -30,6 +30,15 @@ namespace FoodCart.API
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<ICartRepository, CartRepository>();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowReactApp", policy =>
+                {
+                    policy.WithOrigins("http://localhost:3000")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
 
             var app = builder.Build();
 
@@ -44,6 +53,11 @@ namespace FoodCart.API
 
             app.UseAuthorization();
 
+            // Enable CORS only in Development environment
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseCors("AllowReactApp");
+            }
 
             app.MapControllers();
 
